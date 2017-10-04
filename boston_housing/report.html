@@ -12200,7 +12200,7 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>Ideally, a model should be as generic as possible to express the characteristics of a dataset. Using all the data for training or not spliting the data for testing could easily lead to overfitting of a dataset. The model could work very well for the dataset but won't work as good when put into reality.</p>
+<p><strong>Answer: </strong>Ideally, a model should be as generic as possible to express the characteristics of a dataset. Using all the data for training leaves no room to validate the model and could result in overfitting model(The model could work very well for the dataset but won't work as good when put into reality). Reserving some data for testing can help detect the overfitting models.</p>
 
 </div>
 </div>
@@ -13756,7 +13756,7 @@ kMWYJs2qLBhjaiUiF1Q1wt9xGNMYrKdnjDEmaFhPzxhjTNCwnp4xxpigYUnPGGNM0LCkZ4wxJmhY
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>The model suffers from high bias</li>
+<li>When max_depth=1, the model suffers from high bias. The training set score and testing set score are converging at a low score which means high error for both cases.</li>
 <li>when max_depth=10, the model suffers from high variance. The training set has very high score however the score on the testing set is not even close.</li>
 </ul>
 
