@@ -13187,6 +13187,12 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <li>Weakness of the model: It is memory-intensive and slow. It is also hard to interpret and is hard to tune a model.</li>
 <li>SVM works well in general. Since I did not study the data extensively nor have any prior knowledge about the data, SVM seems a pretty good fit.</li>
 </ul>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">https://en.wikipedia.org/wiki/Decision_tree_learning</a></li>
+<li><a href="https://www.datasciencecentral.com/profiles/blogs/want-to-know-how-to-choose-machine-learning-algorithm">https://www.datasciencecentral.com/profiles/blogs/want-to-know-how-to-choose-machine-learning-algorithm</a></li>
+<li><a href="http://blog.echen.me/2011/04/27/choosing-a-machine-learning-classifier/">http://blog.echen.me/2011/04/27/choosing-a-machine-learning-classifier/</a></li>
+</ul>
 
 </div>
 </div>
@@ -14220,16 +14226,38 @@ Decision Tree (with max_depth = 14) is the most appropriate for the task of iden
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-Decision tree tries to solve the problem by using tree representation. A typical tree looks like this:
+Decision tree an exercise of separating data by asking questions based on the attributes of the dataset. Each question should have multiple answers and the answers split the dataset further into subsets. Then within each the subsets, you could ask another question to split the dataset further. Keep doing this process until the data in each subset has same result meaning a decision. For example if you have a dataset with 2 records:</p>
+<table>
+<thead><tr>
+<th></th>
+<th style="text-align:center">Number</th>
+<th style="text-align:right">Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>record1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:right">False</td>
+</tr>
+<tr>
+<td>record2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">True</td>
+</tr>
+</tbody>
+</table>
+<p>You could ask a question: Is Number is 0? This question will lead to 2 paths: answer is yes or answer is no. If the answer is yes, you check the  Result of the records with Number 0. Here you have 1 record with Result False. Since all the data in this subset has Result = Fasle, this is the decision and you stop here. For the other answer - no, you do the same thing. The record with Number is not 0 has 1 Result True and you have the decision True. Basically, the question you asked: Is Number is 0 separates the data into two subsets and each leads to a decision.</p>
+<p>Graphically decision tree uses tree representation. A typical tree looks like this:
 <img src="attachment:image.png" alt="image.png"></p>
-<p>For decision tree, each internal node of the tree corresponds to an attribute, each branch is a path with subset values corresponds to the attribute above, and each leaf node corresponds to a decision. For example:
+<p>For decision tree, root and each internal node of the tree corresponds to a question, each branch is a path with an answer to the question above, and each leaf node corresponds to a decision. For example:
 <img src="attachment:dm_decision_tree.jpg" alt="dm_decision_tree.jpg"></p>
 <p>To build a decision tree, we follow the steps:</p>
 <ul>
-<li>Starting at the root node of the tree</li>
+<li>Starting at the root node of the tree with the training data you have</li>
 <li>Step 1: Place the best attribute of the dataset at the current node of the tree.</li>
-<li>Step 2: Split the training set into subsets based on the values on the branch. Each subset should contain data with the same value as the branch specified.</li>
-<li>Repeat step 1 and step 2 on each subset until you find leaf nodes or reaches the max depth.</li>
+<li>Step 2: Split the training data into subsets based on the values on the branch. Each subset should contain data with the same value as the branch specified.</li>
+<li>Repeat step 1 and step 2 on each subset until you find leaf nodes.</li>
 </ul>
 <p>To make a prediction with a test record, simply follow the tree that is already built and follow the tree nodes progression from the root using the feature values in the test record until a leaf is reached. The predicted label is the value in the leaf.</p>
 
