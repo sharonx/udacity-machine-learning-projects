@@ -13170,7 +13170,7 @@ Waypoint, light, left, oncoming are the most relevant features for leaning both 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The size of the state space is 3 <em> 2 </em> 4 <em> 4 = 96(possible waypoint </em> possible light <em> possible left </em> possible oncoming). Yes the driving agent could learn a policy for each possible state within a resonable number of training trials.</p>
+The size of the state space is 3 (3 possible waypoint) 2 (2 possible lights) 4 (4 possible oncoming) * 4 (4 possible left) = 96. I think the driving agent could learn a policy for each possible state within a reasonable number of trails as 96 is not a big number.</p>
 
 </div>
 </div>
@@ -16069,7 +16069,7 @@ left_green_None_right<br>
 <p><strong>Answer:</strong></p>
 <ul>
 <li>Smartcab's goal is to learn the traffic rules. Smartcab only knows the state at it current position and the optimal traffic policy we know also only dependent on the current state, therefore smartcab should be able to learn it just from the immediate rewards based on the state it is in.</li>
-<li>The environment (each state) is also independent from time. If the smartcab is in the same state, it should always make the same right decision no matter what time it is. The destination also does not change throughout the trial runs, so immediate rewards are enough to get the smartcar to the destination. </li>
+<li>The environment is also independent from time as it resets randomly so the agent can't simply 'memorize' the results of previous trials in order to predict how taking a certain action will impact future states and values. If the smartcab is in the same state, it should always make the same right decision after learning the rule and immediate rewards are enough for the smartcar to learn the rules. </li>
 </ul>
 
 </div>
