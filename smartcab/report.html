@@ -13136,7 +13136,7 @@ Waypoint, light, left, oncoming are the most relevant features for leaning both 
 <ul>
 <li>waypoint is important for efficiency. It encourage the agent to take an action that ends up closer to the destination.</li>
 <li>light is important for safety. When light is red, the agent should stay idle.</li>
-<li>left and oncming are also important for safety reasons. When there is a car coming from certain direction, the agent should avoid the conflict.</li>
+<li>left and oncoming are also important for safety reasons. When there is a car coming from certain direction, the agent should avoid the conflict.</li>
 <li>right is less important as the traffic rule allows the right-of-way.</li>
 <li>deadline is not an important feature beacause the number of remaining actions should not affect the decision of the smart cab based on the info given (waypoint and inputs).</li>
 </ul>
@@ -13170,7 +13170,7 @@ Waypoint, light, left, oncoming are the most relevant features for leaning both 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The size of the state space is 2^6 = 64. Yes the driving agent could learn a policy for each possible state within a resonable number of training trials.</p>
+The size of the state space is 3 <em> 2 </em> 4 <em> 4 = 96(possible waypoint </em> possible light <em> possible left </em> possible oncoming). Yes the driving agent could learn a policy for each possible state within a resonable number of training trials.</p>
 
 </div>
 </div>
@@ -16038,7 +16038,7 @@ left_green_None_right<br>
 -- left : 0.00</p>
 </li>
 </ol>
-<p>Right is given the highest value but the best action here is None (stop).</p>
+<p>Right is given the highest value but the best action here is None (stop). It didn't learn the optimal policy becasue turning right won’t cause any safety issue but will make the driving route less efficient. Actually, forward, None, left are given 0.00 reward which means any action taken here is okay. We may need to data/trails to learn the optimal policy or adjust the weight for efficiency while learning.</p>
 
 </div>
 </div>
@@ -16068,8 +16068,8 @@ left_green_None_right<br>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>Smartcab's goal is to learn the traffic rules. Those rules have nothing to do with time. That means, those rules don't change no matter how long the smartcab has driven.</li>
-<li>The environment (each state) is also independent from time. If the smartcab is in the same state, it should always make the same right decision no matter what time it is.</li>
+<li>Smartcab's goal is to learn the traffic rules. Smartcab only knows the state at it current position and the optimal traffic policy we know also only dependent on the current state, therefore smartcab should be able to learn it just from the immediate rewards based on the state it is in.</li>
+<li>The environment (each state) is also independent from time. If the smartcab is in the same state, it should always make the same right decision no matter what time it is. The destination also does not change throughout the trial runs, so immediate rewards are enough to get the smartcar to the destination. </li>
 </ul>
 
 </div>
